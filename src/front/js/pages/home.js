@@ -1,24 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Context } from "../store/appContext";
 import "../../styles/home.css";
 
 export const Home = () => {
-  const STUDENTS = [
-    "Miguel Ángel Padilla",
-     "Alicia Garrote",
-     "Andrés Hermelo",
-    "Carlos Pérez",
-    "Jessica Rojas ",
-    "Jesús Robles",
-    "Joel Font",
-    "Jonathan Díaz",
-    "José Ignacio Casanova",
-    "José Javier Bustillo",
-    "Juan Enrique Arés",
-    "Mateo Gómez",
-    "Miguel Ángel Jurado",
-    "Sergio Mendoza",
 
-  ];
 
   function Group(id, group, student1, student2, student3) {
     this.id = id;
@@ -27,13 +12,13 @@ export const Home = () => {
     this.student2 = student2;
     this.student3 = student3;
   }
-
+  const {store, actions} = useContext(Context)
   const [randomNumber, setRandomNumber] = useState([]);
   const [numperson, setNumperson] = useState(2);
 
   const generateTwoRandomNumbersDifferent = () => {
-    while (randomNumber.length < STUDENTS.length) {
-      let r = Math.floor(Math.random() * STUDENTS.length);
+    while (randomNumber.length < store.STUDENTS.length) {
+      let r = Math.floor(Math.random() * store.STUDENTS.length);
       randomNumber.indexOf(r) === -1 ? randomNumber.push(r) : "";
     }
     return randomNumber;
@@ -47,12 +32,12 @@ export const Home = () => {
     let i = 0;
     let j = 1;
     let sum = 2;
-    for (let z = 0; z < STUDENTS.length / numperson; z++) {
+    for (let z = 0; z < store.STUDENTS.length / numperson; z++) {
       let group = new Group(
         z + 1,
         `Sala ${z + 1}`,
-        STUDENTS[randomNumber[i]],
-        STUDENTS[randomNumber[j]],
+        store.STUDENTS[randomNumber[i]],
+        store.STUDENTS[randomNumber[j]],
         null
       );
       groupFinal.push(group);
@@ -70,7 +55,7 @@ export const Home = () => {
       <div className="text-center mt-5 p-3 students ">
         <h3 className="fw-bold mb-3">Estudiantes</h3>
         <ol>
-          {STUDENTS.map((student, index) => {
+          {store.STUDENTS.map((student, index) => {
             return (
               <li className="mb-2" key={index}>
                 {student}
@@ -121,7 +106,7 @@ export const Home = () => {
           <div className="listgroup d-flex w-75 m-auto ">
             {groupFinal.map((group, index) => {
               return (
-                <div key={index} className="card d-flex m-2 p-2 cardgroup">
+                <div key={index} className="card d-flex w-25 m-2 p-2 cardgroup">
                   <h5 className="card-title fw-bold">
                     {group.student2 ? group.group : ""}
                   </h5>
