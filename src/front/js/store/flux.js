@@ -17,8 +17,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				"Mateo Gómez",
 				"Miguel Ángel Jurado",
 				"Sergio Mendoza",
+				
+				
 			
 			  ],
+			  numPersonPerGroup2: 2,
+			  numPersonPerGroup3: 3
 		},
 		actions: {
 			

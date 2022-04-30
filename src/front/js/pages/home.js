@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import { Cardfor2person } from "../component/cardfor2person";
+import { Cardfor3person } from "../component/cardfor3person";
 
 export const Home = () => {
 
@@ -81,7 +82,8 @@ export const Home = () => {
           role="tabpanel"
           aria-labelledby="pills-profile-tab"
         >
-          <h3 className="text-center mt-4">IN COMMING...</h3>
+          <div className="listgroup d-flex w-75 m-auto ">
+         <Cardfor3person/></div>
         </div>
         {/* RENDER 3 PEOPLE PER GROUP END */}
 

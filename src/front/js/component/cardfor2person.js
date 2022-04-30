@@ -11,11 +11,10 @@ export const Cardfor2person = (props) => {
     this.group = group;
     this.student1 = student1;
     this.student2 = student2;
-    this.student3 = student3;
   }
   const {store, actions} = useContext(Context)
   const [randomNumber, setRandomNumber] = useState([]);
-  const [numperson, setNumperson] = useState(2);
+
 
   const generateTwoRandomNumbersDifferent = () => {
     while (randomNumber.length < store.STUDENTS.length) {
@@ -33,13 +32,12 @@ export const Cardfor2person = (props) => {
     let i = 0;
     let j = 1;
     let sum = 2;
-    for (let z = 0; z < store.STUDENTS.length / numperson; z++) {
+    for (let z = 0; z < store.STUDENTS.length / store.numPersonPerGroup2; z++) {
       let group = new Group(
         z + 1,
         `Sala ${z + 1}`,
         store.STUDENTS[randomNumber[i]],
         store.STUDENTS[randomNumber[j]],
-        null
       );
       groupFinal.push(group);
       i = i + sum;
@@ -63,7 +61,8 @@ export const Cardfor2person = (props) => {
                   <p className="card-text fw-bold">
                     {group.student2
                       ? group.student2
-                      : `Vas a la sala ${randomNumber[0] != 0 ? randomNumber[0] : randomNumber[1]}`}
+                       : `Vas a la sala ${Math.floor(Math.random() * store.STUDENTS.length/store.numPersonPerGroup2) + 1 }`}
+                      
                   </p>
                 </div>
               );
