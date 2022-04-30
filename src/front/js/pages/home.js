@@ -17,6 +17,7 @@ export const Home = () => {
     "Mateo Gómez",
     "Miguel Ángel Jurado",
     "Sergio Mendoza",
+
   ];
 
   function Group(id, group, student1, student2, student3) {
@@ -33,7 +34,7 @@ export const Home = () => {
   const generateTwoRandomNumbersDifferent = () => {
     while (randomNumber.length < STUDENTS.length) {
       let r = Math.floor(Math.random() * STUDENTS.length);
-      if (randomNumber.indexOf(r) === -1) randomNumber.push(r);
+      randomNumber.indexOf(r) === -1 ? randomNumber.push(r) : "";
     }
     return randomNumber;
   };
@@ -107,8 +108,10 @@ export const Home = () => {
       </div>
       {/* Buttons for pills END */}
 
-      {/* RENDER 2 PEOPLE PER GROUP START */}
+      {/* RENDER for ALL  PILLS START */}
       <div className="tab-content" id="pills-tabContent">
+      {/* RENDER CARD 2 PEOPLE PER GROUP START */}
+
         <div
           className="tab-pane fade show active"
           id="pills-home"
@@ -118,7 +121,7 @@ export const Home = () => {
           <div className="listgroup d-flex w-75 m-auto ">
             {groupFinal.map((group, index) => {
               return (
-                <div key={index} className="card m-2 p-2 w-25">
+                <div key={index} className="card d-flex m-2 p-2 cardgroup">
                   <h5 className="card-title fw-bold">
                     {group.student2 ? group.group : ""}
                   </h5>
@@ -145,7 +148,10 @@ export const Home = () => {
           <h3 className="text-center mt-4">IN COMMING...</h3>
         </div>
         {/* RENDER 3 PEOPLE PER GROUP END */}
+
       </div>
+      {/* RENDER for ALL  PILLS END */}
+
     </>
   );
 };
