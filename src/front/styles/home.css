@@ -1,7 +1,37 @@
-/*
-    home.css: This website contains selectors only used in home.css
+body{
+    background-image: radial-gradient( circle farthest-corner at 92.3% 71.5%,  rgba(83,138,214,1) 0%, rgba(134,231,214,1) 90% );
+}
+.students{
+    
+    width: 20%;
+    border: 1px solid teal;
+    margin: auto;
+    border-radius: 10%;
+    box-shadow: 3px -3px 16px teal;
+    color: white;
+    font-weight: bold;
+}
+.card{
+    text-align: center;
+    border-radius: 10px;
+}
+.listgroup{
+    border: 1px solid teal;
+    border-radius: 10px;
+    box-shadow: 3px -3px 16px teal;
+}
 
-    All pages share the styles on index.css but you should create 
-    one more css for each page that will contain the selected used 
-    on that page only (the ones not reused in other pages).
-*/
+.buttonspills{
+    color: black;
+    font-weight: bold;
+    border: 1px solid teal;
+    border-radius: 10px;
+    box-shadow: 3px -3px 16px teal;
+
+}
+.buttonspills:hover{
+    color: white;
+    
+   
+
+}
