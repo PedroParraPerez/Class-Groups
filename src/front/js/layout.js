@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Footer } from "./component/footer";
 import { Navbar } from "./component/Navbar";
 import ScrollToTop from "./component/scrollToTop";
 import { Atendancy } from "./pages/Atendancy";
@@ -17,8 +18,8 @@ const Layout = () => {
 	return (
 		<div>
 			<BrowserRouter basename={basename}>
-				<Navbar/>
 				<ScrollToTop>
+				<Navbar/>
 					<Switch>
 					<Route exact path="/">
 							<Home />
@@ -34,6 +35,7 @@ const Layout = () => {
 							<h1>Not found!</h1>
 						</Route>
 					</Switch>
+					<Footer/>
 				</ScrollToTop>
 			</BrowserRouter>
 		</div>

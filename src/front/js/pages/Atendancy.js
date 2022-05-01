@@ -5,7 +5,7 @@ export const Atendancy = () =>{
 
     return(
         <>
-        <h3 className="text-center mt-5">Coming son...</h3>
+        <h3 className="text-center mt-5">Coming soon...</h3>
         </>
     )
 }

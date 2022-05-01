@@ -1,3 +1,9 @@
-/* 
-    General Styles used on every website (Don't Repeat Yourself)
-*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box;
+}
+body{
+
+    background-image: linear-gradient(to right, rgba(83,138,214,1) , rgba(134,231,214,1));
+}
