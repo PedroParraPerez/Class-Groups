@@ -1,9 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import "../../styles/Navbar.css";
-import Waves from "../../img/waves.png";
+import { ModalForSignUp } from "./Modals/modalForSignUp";
+
+
 
 export const Navbar = () => {
+
+  const [modalforSignUp, setModalforSignUp] = useState(false);
+
   return (
     <>
       <nav className="navbar navbar-expand-md navbar-light">
@@ -84,11 +89,11 @@ export const Navbar = () => {
               </Link>
               </li>
               <li className="nav-item dropdown">
-              <Link to="/signup">
-                <span className="spanNavbarLink">
+              
+                <span onClick={()=>{setModalforSignUp(!modalforSignUp)}} className="spanNavbarLink">
                   <b>Registrarse</b>
                 </span>
-              </Link>
+             
             </li>
           </ul>
         </div>
@@ -100,7 +105,10 @@ export const Navbar = () => {
         ></path>
       </svg>
       </nav>
-      
+      {/* Modals START */}
+      {modalforSignUp ? <ModalForSignUp stateModal="is_open"/> :  ""}
+      {/* Modals END */}
+     
     
     </>
   );
