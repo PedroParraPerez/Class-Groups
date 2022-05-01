@@ -53,7 +53,7 @@ export const Cardfor3person = () => {
   let randomNumberForPersonWithoutGroup = []
   const generateTwoRandomNumbersDifferentForPersonWithoutGroup = () => {
     while (randomNumberForPersonWithoutGroup.length < 2) {
-      let r = Math.floor(Math.random() * store.STUDENTS.length/3);
+      let r = Math.floor(Math.random() * store.STUDENTS.length/4) +1;
       randomNumberForPersonWithoutGroup.indexOf(r) === -1 ? randomNumberForPersonWithoutGroup.push(r) : "";
       console.log(randomNumberForPersonWithoutGroup)
     }
