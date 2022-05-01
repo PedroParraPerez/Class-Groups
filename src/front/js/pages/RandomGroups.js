@@ -1,10 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { Context } from "../store/appContext";
-import "../../styles/home.css";
+import "../../styles/RandomGroups.css";
 import { Cardfor2person } from "../component/cardfor2person";
 import { Cardfor3person } from "../component/cardfor3person";
 
-export const Home = () => {
+export const RandomGroups = () => {
 
   const {store, actions} = useContext(Context)
 
