@@ -13,6 +13,7 @@ a, span.spanNavbarLink {
   text-decoration: none;
   color: black;
   cursor: pointer;
+  margin-right: 2rem;
 }
 
 nav.navbar {
@@ -30,8 +31,9 @@ nav.navbar {
     
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   width: 100%;
+ 
 }
 
 .waves{
@@ -54,4 +56,7 @@ z-index: -1;
 .dropdown-menu.show{
   padding: 0;
   border: 1px solid grey;
+}
+img.logo{
+  width: 3rem;
 }

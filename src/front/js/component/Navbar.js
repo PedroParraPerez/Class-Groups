@@ -5,6 +5,7 @@ import { Context } from "../store/appContext";
 import { ModalforLogin } from "./Modals/ModalforLogin";
 import { ModalForSignUp } from "./Modals/modalForSignUp";
 import Profile from "../../img/profile-user.png"
+import Logo from "../../img/logo.png"
 
 export const Navbar = () => {
 
@@ -18,13 +19,7 @@ export const Navbar = () => {
     <>
       <nav className="navbar navbar-expand-md navbar-light">
         <Link to="/">
-          <span
-            className="navbarBrand spanNavbarLink"
-            id="sacameelpadding"
-            href="#"
-          >
-            Home
-          </span>
+          <img src={Logo} alt="Cap" className="logo"/>
         </Link>
         {/* HAMBURGER MENU START  */}
         <button
@@ -70,7 +65,7 @@ export const Navbar = () => {
                     <img className="profileIcon" src={Profile} alt="Perfil"/>
                  
                 </a>
-                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                <ul className="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
                   <li>
                     <Link to="/">
                     <span className="dropdown-item" >
@@ -84,21 +79,22 @@ export const Navbar = () => {
                       
                     </span></Link>
                   </li>
-
-                  
-                </ul>
-              </li>
-              <li className="nav-item dropdown">
-                  <span
+                  <li >
+                  <a className="dropdown-item"
                     onClick={() => {
                       actions.logOut();
                       navigateHome()
                     }}
-                    className="spanNavbarLink"
+                    
                   >
                     <b>Cerrar Sesión</b>
-                  </span>
+                  </a>
                 </li>
+
+                  
+                </ul>
+              </li>
+              
               </>
             ) : (
               <>

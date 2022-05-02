@@ -7,7 +7,7 @@ db = SQLAlchemy()
 
 groups = db.Table('groups',
     db.Column('groups_id', db.Integer, db.ForeignKey('group.id'), primary_key=True),
-    db.Column('proffesor_id', db.Integer, db.ForeignKey('teacher.id'), primary_key=True)
+    db.Column('teacher_id', db.Integer, db.ForeignKey('teacher.id'), primary_key=True)
 )
 
 projects = db.Table('projects',
@@ -25,7 +25,7 @@ class Teacher(db.Model):
     password = db.Column(db.String(240), unique=False, nullable=False)
     type_of_teacher = db.Column(db.String(120), unique=False, nullable=True)
     
-    groups = db.relationship('Group', secondary=groups, lazy='subquery',backref=db.backref('Proffesors', lazy=True)) # Many to Many with Group, dont need line in Group
+    groups = db.relationship('Group', secondary=groups, lazy='subquery',backref=db.backref('Teachers', lazy=True)) # Many to Many with Group, dont need line in Group
 
     def __repr__(self):
         return f'<Teacher {self.name}>'

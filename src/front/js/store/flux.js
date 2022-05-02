@@ -1,7 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			URLAPI : "https://3001-pedroparrap-classgroups-rwdt2zubbnk.ws-eu43.gitpod.io/api/",
+			URLAPI : "https://3001-pedroparrap-classgroups-m2cqaif9czb.ws-eu43.gitpod.io/api/",
 			STUDENTS: [
 				"Miguel Ángel Padilla",
 				"Alicia Garrote",
