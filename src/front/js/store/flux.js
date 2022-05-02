@@ -1,7 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-
+			URLAPI : "https://3001-pedroparrap-classgroups-rwdt2zubbnk.ws-eu43.gitpod.io/api/",
 			STUDENTS: [
 				"Miguel Ángel Padilla",
 				 "Alicia Garrote",
@@ -22,9 +22,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 			
 			  ],
 			  numPersonPerGroup2: 2,
-			  numPersonPerGroup3: 3
+			  numPersonPerGroup3: 3,
+			  allStudentInWeb: []
 		},
 		actions: {
+
+		getStudent: async () => {
+			const response = await fetch(getStore().URLAPI + "allstudents");
+			const data = await response.json();
+			
+			setStore({ allStudentInWeb: data.results });
+		  },
 			
 		}
 	};
