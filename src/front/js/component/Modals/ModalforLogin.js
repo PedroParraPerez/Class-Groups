@@ -1,4 +1,4 @@
-import React, {useState, useContext} from "react";
+import React, {useContext} from "react";
 import PropTypes from "prop-types";
 import "../../../styles/modalForLogin.css"
 import { Context } from "../../store/appContext";
@@ -6,7 +6,7 @@ import { Context } from "../../store/appContext";
 
 export const ModalforLogin = (props) => {
 
-    const [modalOpen, setModalOpen] = useState(false)
+   
     const {store, actions} = useContext(Context)
 
     return(
@@ -28,5 +28,3 @@ export const ModalforLogin = (props) => {
 ModalforLogin.propTypes = {
 	stateModal: PropTypes.string,
 };
-
-// ((modalOpen || props.stateModal == true) ? `is_open` : "")
