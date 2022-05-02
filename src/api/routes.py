@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, Professor, Student, Group, Course, Project, Attendancy
+from api.models import db, Teacher, Student, Group, Course, Project, Attendancy
 from api.utils import generate_sitemap, APIException
 import datetime
 from flask_jwt_extended import create_access_token
@@ -21,6 +21,30 @@ def get_all_students():
     
     return jsonify({'results': list(map(lambda student: student.serialize(), students))}),200
 
+@api.route('/allteachers', methods=['GET'])
+def get_all_teachers():
+    teachers = Teacher.query.all()
+    
+    return jsonify({'results': list(map(lambda teacher: teacher.serialize(), teachers))}),200
+
+@api.route('/allgroups', methods=['GET'])
+def get_all_groups():
+    groups = Group.query.all()
+    
+    return jsonify({'results': list(map(lambda group: group.serialize(), groups))}),200
+
+@api.route('/allcourses', methods=['GET'])
+def get_all_courses():
+    courses = Course.query.all()
+    
+    return jsonify({'results': list(map(lambda course: course.serialize(), courses))}),200
+
+@api.route('/allprojects', methods=['GET'])
+def get_all_projects():
+    projects = Project.query.all()
+    
+    return jsonify({'results': list(map(lambda project: project.serialize(), projects))}),200
+
 @api.route('/signupteacher', methods=["POST"])
 def signupTeacher():
 
@@ -34,7 +58,7 @@ def signupTeacher():
         return jsonify({'message': 'Data not provided'}), 400
 
     hash_password = generate_password_hash(password)
-    proffesor = Professor(email=email, password=hash_password, type_of_professor=type)
+    proffesor = Teacher(email=email, password=hash_password, type_of_teacher=type)
     try:
 
         db.session.add(proffesor)
@@ -55,16 +79,16 @@ def login():
         return jsonify({'message': 'Data not provided'}), 400
 
     # traer de mi base de datos un usuario por su email
-    professor = Professor.query.filter_by(email=email).one_or_none()       
+    teacher = Teacher.query.filter_by(email=email).one_or_none()       
 
-    if not professor:
+    if not teacher:
         return jsonify({'message': 'Email is not valid'}), 404
 
     # comprobar si la contraseña es correcta
-    if not check_password_hash(professor.password, password):
+    if not check_password_hash(teacher.password, password):
         return jsonify({'message': 'Your pass doesn"t match'}), 500
 
-    token = create_access_token(identity=professor.id, expires_delta = datetime.timedelta(minutes=60))
+    token = create_access_token(identity=teacher.id, expires_delta = datetime.timedelta(minutes=60))
 
     
-    return jsonify({'token':token, 'professor':professor.serialize()}), 200
+    return jsonify({'token':token, 'teacher':teacher.serialize()}), 200

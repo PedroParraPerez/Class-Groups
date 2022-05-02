@@ -7,7 +7,7 @@ db = SQLAlchemy()
 
 groups = db.Table('groups',
     db.Column('groups_id', db.Integer, db.ForeignKey('group.id'), primary_key=True),
-    db.Column('proffesor_id', db.Integer, db.ForeignKey('professor.id'), primary_key=True)
+    db.Column('proffesor_id', db.Integer, db.ForeignKey('teacher.id'), primary_key=True)
 )
 
 projects = db.Table('projects',
@@ -18,24 +18,24 @@ projects = db.Table('projects',
 
 
 
-class Professor(db.Model):
+class Teacher(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), nullable=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(240), unique=False, nullable=False)
-    type_of_professor = db.Column(db.String(120), unique=False, nullable=True)
+    type_of_teacher = db.Column(db.String(120), unique=False, nullable=True)
     
     groups = db.relationship('Group', secondary=groups, lazy='subquery',backref=db.backref('Proffesors', lazy=True)) # Many to Many with Group, dont need line in Group
 
     def __repr__(self):
-        return f'<Professor {self.name}>'
+        return f'<Teacher {self.name}>'
 
     def serialize(self):
         return {
             "id": self.id,
             "name": self.name,
             "email": self.email,
-            "type_of_professor": self.type_of_professor,
+            "type_of_teacher": self.type_of_teacher,
         }
 
 class Student(db.Model):

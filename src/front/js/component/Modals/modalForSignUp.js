@@ -52,7 +52,7 @@ export const ModalForSignUp = (props) => {
             });
           }}
          >
-          <option selected disabled>Tipo de profesor</option>
+          <option selected disabled hidden>Tipo de profesor</option>
           <option value="teacher">Profesor Principal</option>
           <option value="teacher assistant">
             Profesor Asistente

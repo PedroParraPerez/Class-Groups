@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 18b8bd5b7269
+Revision ID: dcbbc440a5ad
 Revises: 
-Create Date: 2022-05-02 10:37:16.203003
+Create Date: 2022-05-02 12:11:30.198150
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '18b8bd5b7269'
+revision = 'dcbbc440a5ad'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -34,21 +34,21 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('name')
     )
-    op.create_table('professor',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(length=120), nullable=True),
-    sa.Column('email', sa.String(length=120), nullable=False),
-    sa.Column('password', sa.String(length=240), nullable=False),
-    sa.Column('type_of_professor', sa.String(length=120), nullable=True),
-    sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('email')
-    )
     op.create_table('project',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=120), nullable=False),
     sa.Column('done', sa.Boolean(), nullable=False),
     sa.Column('description', sa.String(length=120), nullable=True),
     sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('teacher',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('name', sa.String(length=120), nullable=True),
+    sa.Column('email', sa.String(length=120), nullable=False),
+    sa.Column('password', sa.String(length=240), nullable=False),
+    sa.Column('type_of_teacher', sa.String(length=120), nullable=True),
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('email')
     )
     op.create_table('group',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -63,7 +63,7 @@ def upgrade():
     sa.Column('groups_id', sa.Integer(), nullable=False),
     sa.Column('proffesor_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['groups_id'], ['group.id'], ),
-    sa.ForeignKeyConstraint(['proffesor_id'], ['professor.id'], ),
+    sa.ForeignKeyConstraint(['proffesor_id'], ['teacher.id'], ),
     sa.PrimaryKeyConstraint('groups_id', 'proffesor_id')
     )
     op.create_table('projects',
@@ -91,8 +91,8 @@ def downgrade():
     op.drop_table('projects')
     op.drop_table('groups')
     op.drop_table('group')
+    op.drop_table('teacher')
     op.drop_table('project')
-    op.drop_table('professor')
     op.drop_table('course')
     op.drop_table('attendancy')
     # ### end Alembic commands ###

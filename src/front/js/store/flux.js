@@ -77,7 +77,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			  return true; // posiblemente necesario en el futuro, por eso lo dejo
 			} else {
-			  alert("Ya hay un usuario registrado con ese email");
+			  alert("No se ha podido realizar el registro");
 			  return false;
 			}
 		  },
