@@ -29,8 +29,6 @@ const Layout = () => {
                 </>
               }
             />
-
-            
           </Routes>
           <Footer />
         </ScrollToTop>

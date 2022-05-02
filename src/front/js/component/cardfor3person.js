@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
-import PropTypes from "prop-types";
+import React, { useState,  useContext } from "react";
 import { Context } from "../store/appContext";
 
 export const Cardfor3person = () => {
