@@ -1,0 +1,35 @@
+
+.students{
+    
+    width: 20rem;
+    border: 1px solid teal;
+    margin: auto;
+    border-radius: 10%;
+    box-shadow: 3px -3px 16px teal;
+    color: white;
+    font-weight: bold;
+}
+.cardgroup{
+    width: 12em;
+    text-align: center;
+    border-radius: 10px;
+}
+.listgroup{
+    border: 1px solid teal;
+    border-radius: 10px;
+    box-shadow: 3px -3px 16px teal;
+
+}
+
+.buttonspills{
+    color: black;
+    font-weight: bold;
+    border: 1px solid teal;
+    border-radius: 10px;
+    box-shadow: 3px -3px 16px teal;
+
+}
+.buttonspills:hover{
+    color: white;
+}
+
