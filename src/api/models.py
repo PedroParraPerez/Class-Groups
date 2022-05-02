@@ -20,10 +20,10 @@ projects = db.Table('projects',
 
 class Professor(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(120), nullable=False)
+    name = db.Column(db.String(120), nullable=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(80), unique=False, nullable=False)
-    type_of_professor = db.Column(db.String(120), unique=False, nullable=False)
+    password = db.Column(db.String(240), unique=False, nullable=False)
+    type_of_professor = db.Column(db.String(120), unique=False, nullable=True)
     
     groups = db.relationship('Group', secondary=groups, lazy='subquery',backref=db.backref('Proffesors', lazy=True)) # Many to Many with Group, dont need line in Group
 
@@ -35,7 +35,7 @@ class Professor(db.Model):
             "id": self.id,
             "name": self.name,
             "email": self.email,
-            "type": self.type,
+            "type_of_professor": self.type_of_professor,
         }
 
 class Student(db.Model):

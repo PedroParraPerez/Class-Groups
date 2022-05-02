@@ -34,7 +34,52 @@ const getState = ({ getStore, getActions, setStore }) => {
 			const aux = getStore().modalSignUp
 			setStore({ modalSignUp: !aux });
 		},
-
+		logIn: async (teacher) => {
+			const response = await fetch(getStore().URLAPI + "login", {
+			  method: "POST",
+			  headers: {
+				"Content-Type": "application/json",
+				Accept: "application/json",
+			  },
+			  body: JSON.stringify(teacher),
+			});
+			if (response.status == 200) {
+				const data = await response.json();
+			  	localStorage.setItem("token", data.token);
+			  	localStorage.setItem("logIn", true);
+			  	getActions().modalLogin()
+			  	return true;
+			} else {
+			  alert("Contraseña o usuario incorrectos");
+			  return false;
+			}
+		  },
+		logOut : () => {
+			localStorage.removeItem("logIn");
+			localStorage.removeItem("token");
+			return true
+		},
+		// Functions for Token
+		registerTeacher: async (teacher) => {
+			const response = await fetch(getStore().URLAPI + "signupteacher", {
+			  method: "POST",
+			  headers: {
+				"Content-Type": "application/json",
+				Accept: "application/json",
+			  },
+			  body: JSON.stringify(teacher),
+			});
+			if (response.status == 201) {
+			  const data = await response.json();
+			  localStorage.setItem("token", data.token);
+			  localStorage.setItem("isTeacher", true);
+			  getActions().modalSignUp()
+			  return true; // posiblemente necesario en el futuro, por eso lo dejo
+			} else {
+			  alert("Ya hay un usuario registrado con ese email");
+			  return false;
+			}
+		  },
 
 		getStudent: async () => {
 			const response = await fetch(getStore().URLAPI + "allstudents");
