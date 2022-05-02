@@ -4,8 +4,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			URLAPI : "https://3001-pedroparrap-classgroups-rwdt2zubbnk.ws-eu43.gitpod.io/api/",
 			STUDENTS: [
 				"Miguel Ángel Padilla",
-				 "Alicia Garrote",
-				 "Andrés Hermelo",
+				"Alicia Garrote",
+				"Andrés Hermelo",
 				"Carlos Pérez",
 				"Jessica Rojas ",
 				"Jesús Robles",
@@ -17,9 +17,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				"Mateo Gómez",
 				"Miguel Ángel Jurado",
 				"Sergio Mendoza",
-				
-				
-			
 			  ],
 			  numPersonPerGroup2: 2,
 			  numPersonPerGroup3: 3,
