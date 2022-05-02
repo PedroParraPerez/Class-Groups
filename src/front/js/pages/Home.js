@@ -8,6 +8,7 @@ export const Home = () => {
 
   return (
     <>
+      <h1 className="text-center mt-5">HOME</h1>
       <h3 className="text-center mt-5">Coming soon...</h3>
       
     </>
