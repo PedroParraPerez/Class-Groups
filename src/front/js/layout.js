@@ -32,7 +32,7 @@ const Layout = () => {
 						</Route>
 
 						<Route>
-							<h1>Not found!</h1>
+							<h1 className="text-center mt-5">Not found!</h1>
 						</Route>
 					</Switch>
 					<Footer/>

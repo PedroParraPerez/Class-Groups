@@ -23,9 +23,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 			  ],
 			  numPersonPerGroup2: 2,
 			  numPersonPerGroup3: 3,
-			  allStudentInWeb: []
+			  modalLogin: false,
+			  modalSignUp: false,
+			  allStudentInWeb: [],
 		},
 		actions: {
+		
+		modalLogin : () => {
+			const aux = getStore().modalLogin
+			setStore({ modalLogin: !aux });
+		},
+		modalSingUp : () => {
+			const aux = getStore().modalSignUp
+			setStore({ modalSignUp: !aux });
+		},
+
 
 		getStudent: async () => {
 			const response = await fetch(getStore().URLAPI + "allstudents");

@@ -1,6 +1,8 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import { Link } from "react-router-dom";
 import "../../styles/Navbar.css";
+import { Context } from "../store/appContext";
+import { ModalforLogin } from "./Modals/ModalforLogin";
 import { ModalForSignUp } from "./Modals/modalForSignUp";
 
 
@@ -8,7 +10,8 @@ import { ModalForSignUp } from "./Modals/modalForSignUp";
 export const Navbar = () => {
 
   const [modalforSignUp, setModalforSignUp] = useState(false);
-
+  const [modalfforLogin, setModalforLogin] = useState(false);
+  const {store, actions} = useContext(Context)
   return (
     <>
       <nav className="navbar navbar-expand-md navbar-light">
@@ -82,22 +85,22 @@ export const Navbar = () => {
               </ul>
             </li>
             <li className="nav-item dropdown">
-            <Link to="/login">
-                <span className="spanNavbarLink">
+            
+                <span onClick={()=>{actions.modalLogin()}} className="spanNavbarLink">
                   <b>Iniciar Sesión</b>
                 </span>
-              </Link>
+             
               </li>
               <li className="nav-item dropdown">
               
-                <span onClick={()=>{setModalforSignUp(!modalforSignUp)}} className="spanNavbarLink">
+                <span onClick={()=>{actions.modalSingUp()}} className="spanNavbarLink">
                   <b>Registrarse</b>
                 </span>
              
             </li>
           </ul>
         </div>
-        {/* LINKS START */}
+        {/* LINKS END */}
         <svg className="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 193">
         <path
           fill="#3062be"
@@ -106,7 +109,8 @@ export const Navbar = () => {
       </svg>
       </nav>
       {/* Modals START */}
-      {modalforSignUp ? <ModalForSignUp stateModal="is_open"/> :  ""}
+      {store.modalSignUp ? <ModalForSignUp stateModal="is_open"/> :  ""}
+      {store.modalLogin ? <ModalforLogin stateModal="is_open"/> :  ""}
       {/* Modals END */}
      
     
