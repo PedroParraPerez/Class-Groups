@@ -72,10 +72,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			if (response.status == 201) {
 			  const data = await response.json();
 			  localStorage.setItem("token", data.token);
-			  localStorage.setItem("isTeacher", true);
+			  localStorage.setItem("logIn", true);
 			  getActions().modalSingUp()
 
-			  return true; // posiblemente necesario en el futuro, por eso lo dejo
+			  return true;
 			} else {
 			  alert("No se ha podido realizar el registro");
 			  return false;
