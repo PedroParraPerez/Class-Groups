@@ -40,3 +40,18 @@ left: 0;
 top: 100%;
 z-index: -1;
 }
+.profileIcon{
+  width: 2rem;
+  height: 2rem;
+}
+.dropdown-item{
+  width: 80%;
+}
+.dropdown-item:hover{
+ background-color: gray;
+ color: white;
+}
+.dropdown-menu.show{
+  padding: 0;
+  border: 1px solid grey;
+}

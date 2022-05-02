@@ -4,6 +4,7 @@ import "../../styles/Navbar.css";
 import { Context } from "../store/appContext";
 import { ModalforLogin } from "./Modals/ModalforLogin";
 import { ModalForSignUp } from "./Modals/modalForSignUp";
+import Profile from "../../img/profile-user.png"
 
 export const Navbar = () => {
 
@@ -65,27 +66,26 @@ export const Navbar = () => {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  <span className="spanNavbarLink">
-                    <b>Perfil</b>
-                  </span>
+                  
+                    <img className="profileIcon" src={Profile} alt="Perfil"/>
+                 
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li>
-                    <a className="dropdown-item" href="#">
-                      Action
-                    </a>
+                    <Link to="/">
+                    <span className="dropdown-item" >
+                      <b>Cuenta</b>
+                    </span></Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
-                      Another action
-                    </a>
+                  <Link to="/">
+                    <span className="dropdown-item">
+                    <b>Configuración</b>
+                      
+                    </span></Link>
                   </li>
 
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Something else here
-                    </a>
-                  </li>
+                  
                 </ul>
               </li>
               <li className="nav-item dropdown">
