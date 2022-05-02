@@ -73,7 +73,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			  const data = await response.json();
 			  localStorage.setItem("token", data.token);
 			  localStorage.setItem("isTeacher", true);
-			  getActions().modalSignUp()
+			  getActions().modalSingUp()
+
 			  return true; // posiblemente necesario en el futuro, por eso lo dejo
 			} else {
 			  alert("Ya hay un usuario registrado con ese email");

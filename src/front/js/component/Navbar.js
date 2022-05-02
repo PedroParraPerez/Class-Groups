@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../styles/Navbar.css";
 import { Context } from "../store/appContext";
 import { ModalforLogin } from "./Modals/ModalforLogin";
@@ -8,6 +8,11 @@ import { ModalForSignUp } from "./Modals/modalForSignUp";
 export const Navbar = () => {
 
   const { store, actions } = useContext(Context);
+  let navigate = useNavigate();
+
+  const navigateHome = () => {
+    navigate("/");
+  };
   return (
     <>
       <nav className="navbar navbar-expand-md navbar-light">
@@ -87,6 +92,7 @@ export const Navbar = () => {
                   <span
                     onClick={() => {
                       actions.logOut();
+                      navigateHome()
                     }}
                     className="spanNavbarLink"
                   >
