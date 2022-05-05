@@ -104,6 +104,7 @@ def my_classes():
     if teacher:
         my_groups = teacher.groups
         all_my_groups = [group.serialize() for group in my_groups] # serializame por cada favorito, en user_favorites
+        print(all_my_groups)
         return jsonify(all_my_groups), 200
    
     return jsonify({'error': 'No favourite animals'}),404

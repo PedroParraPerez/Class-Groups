@@ -77,6 +77,8 @@ class Group(db.Model):
         return {
             "id": self.id,
             "name": self.name,
+            "course_id": self.course_id,
+            "attendancy_id": self.attendancy_id,
         }
 
 class Course(db.Model):
