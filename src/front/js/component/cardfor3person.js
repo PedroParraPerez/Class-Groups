@@ -64,7 +64,7 @@ export const Cardfor3person = () => {
     <>
       {groupFinal.map((group, index) => {
         return (
-          <div key={index} className="card d-flex w-25 m-2 p-2 cardgroup">
+          <div key={index} className="card col-sm m-2 p-2 cardgroup">
             <h5 className="card-title fw-bold">
               {group.student3 ? group.group : ""}
             </h5>

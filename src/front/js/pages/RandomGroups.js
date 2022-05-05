@@ -54,7 +54,6 @@ export const RandomGroups = () => {
         {/* RENDER for ALL  PILLS START */}
         <div className="tab-content" id="pills-tabContent">
           {/* RENDER CARD 2 PEOPLE PER GROUP START */}
-
           <div
             className="tab-pane fade show active"
             id="pills-home"
@@ -62,9 +61,7 @@ export const RandomGroups = () => {
             aria-labelledby="pills-home-tab"
           >
             <div className="row listgroups">
-              
                 <Cardfor2person />
-             
             </div>
           </div>
           {/* RENDER 2 PEOPLE PER GROUP END */}
@@ -76,7 +73,9 @@ export const RandomGroups = () => {
             role="tabpanel"
             aria-labelledby="pills-profile-tab"
           >
+            <div className="row listgroups">
             <Cardfor3person />
+            </div>
           </div>
 
           {/* RENDER 3 PEOPLE PER GROUP END */}
