@@ -1,7 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			URLAPI : "https://3001-pedroparrap-classgroups-rwdt2zubbnk.ws-eu43.gitpod.io/api/",
+			URLAPI : "https://3001-pedroparrap-classgroups-o2hnmaz3ctl.ws-eu43.gitpod.io/api/",
 			STUDENTS: [
 				"Miguel Ángel Padilla",
 				"Alicia Garrote",
@@ -23,6 +23,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			  modalLogin: false,
 			  modalSignUp: false,
 			  allStudentInWeb: [],
+			  MyClasses: [],
 		},
 		actions: {
 		
@@ -82,13 +83,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 			}
 		  },
 
-		getStudent: async () => {
-			const response = await fetch(getStore().URLAPI + "allstudents");
+		
+		getMyClasses: async () => {
+			const response = await fetch(getStore().URLAPI + "profile/classes", {
+			  method: "GET",
+			  headers: {
+				"Content-Type": "application/json",
+				Accept: "application/json",
+				Authorization: `Bearer ${localStorage.getItem("token")}`,
+			  },
+			});
 			const data = await response.json();
-			
-			setStore({ allStudentInWeb: data.results });
+	
+			setStore({ MyClasses: data.results });
 		  },
-			
 		}
 	};
 };

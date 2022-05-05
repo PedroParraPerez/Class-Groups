@@ -7,15 +7,18 @@ db = SQLAlchemy()
 
 groups = db.Table('groups',
     db.Column('groups_id', db.Integer, db.ForeignKey('group.id'), primary_key=True),
-    db.Column('proffesor_id', db.Integer, db.ForeignKey('teacher.id'), primary_key=True)
+    db.Column('teacher_id', db.Integer, db.ForeignKey('teacher.id'), primary_key=True)
 )
 
-projects = db.Table('projects',
+projects_groups = db.Table('projects_groups',
     db.Column('groups_id', db.Integer, db.ForeignKey('group.id'), primary_key=True),
     db.Column('projects_id', db.Integer, db.ForeignKey('project.id'), primary_key=True)
 )
 
-
+projects_students = db.Table('projects_student',
+    db.Column('student_id', db.Integer, db.ForeignKey('student.id'), primary_key=True),
+    db.Column('projects_id', db.Integer, db.ForeignKey('project.id'), primary_key=True)
+)
 
 
 class Teacher(db.Model):
@@ -25,7 +28,7 @@ class Teacher(db.Model):
     password = db.Column(db.String(240), unique=False, nullable=False)
     type_of_teacher = db.Column(db.String(120), unique=False, nullable=True)
     
-    groups = db.relationship('Group', secondary=groups, lazy='subquery',backref=db.backref('Proffesors', lazy=True)) # Many to Many with Group, dont need line in Group
+    groups = db.relationship('Group', secondary=groups, lazy='subquery',backref=db.backref('Teachers', lazy=True)) # Many to Many with Group, dont need line in Group
 
     def __repr__(self):
         return f'<Teacher {self.name}>'
@@ -36,12 +39,13 @@ class Teacher(db.Model):
             "name": self.name,
             "email": self.email,
             "type_of_teacher": self.type_of_teacher,
+            'groups': [group.serialize() for group in self.groups]
         }
 
 class Student(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), nullable=False)
-    Group_id = db.Column(db.Integer, db.ForeignKey('group.id'), nullable=True) # One to Many with Group
+    group_id = db.Column(db.Integer, db.ForeignKey('group.id'), nullable=True) # One to Many with Group
     attendancy_id = db.Column(db.Integer, db.ForeignKey('attendancy.id'), nullable=True) # One to Many with Attendancy
 
 
@@ -54,6 +58,8 @@ class Student(db.Model):
         return {
             "id": self.id,
             "name": self.name,
+            "group_id": self.group_id,
+            "attendancy_id": self.attendancy_id,
         }
         
 class Group(db.Model):
@@ -98,7 +104,8 @@ class Project(db.Model):
     name = db.Column(db.String(120), nullable=False)
     done = db.Column(db.Boolean(), nullable=False)
     description = db.Column(db.String(120), nullable=True)
-    groups = db.relationship('Group', secondary=projects, lazy='subquery',backref=db.backref('Project', lazy=True)) # Many to Many with Group, dont need line in Group
+    projects_groups = db.relationship('Group', secondary=projects_groups, lazy='subquery',backref=db.backref('Project', lazy=True)) # Many to Many with Group, dont need line in Group
+    projects_students = db.relationship('Student', secondary=projects_students, lazy='subquery',backref=db.backref('Project', lazy=True)) # Many to Many with Student, dont need line in Student
     
     
 

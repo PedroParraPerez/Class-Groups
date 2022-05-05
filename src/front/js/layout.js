@@ -5,6 +5,8 @@ import { Navbar } from "./component/Navbar";
 import ScrollToTop from "./component/scrollToTop";
 import { Atendancy } from "./pages/Atendancy";
 import { Home } from "./pages/Home";
+import { MyClasses } from "./pages/MyClasses";
+
 
 import { RandomGroups } from "./pages/RandomGroups";
 import injectContext from "./store/appContext";
@@ -29,6 +31,7 @@ const Layout = () => {
                 </>
               }
             />
+            <Route path="/myclasses" element={<MyClasses/>}/>
           </Routes>
           <Footer />
         </ScrollToTop>
