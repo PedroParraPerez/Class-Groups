@@ -10,11 +10,11 @@
     font-weight: bold;
 }
 .cardgroup{
-    width: 12em;
     text-align: center;
     border-radius: 10px;
 }
-.listgroup{
+.listgroups{
+    display: flex;
     border: 1px solid teal;
     border-radius: 10px;
     box-shadow: 3px -3px 16px teal;
