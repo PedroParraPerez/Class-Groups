@@ -13,7 +13,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 api = Blueprint('api', __name__)
 
 
-
+# get all data .................................................................
 
 @api.route('/allstudents', methods=['GET'])
 def get_all_students():
@@ -45,6 +45,8 @@ def get_all_projects():
     
     return jsonify({'results': list(map(lambda project: project.serialize(), projects))}),200
 
+
+# SingUp Login.......................................................................................
 @api.route('/signupteacher', methods=["POST"])
 def signupTeacher():
 
@@ -92,3 +94,16 @@ def login():
 
     
     return jsonify({'token':token, 'teacher':teacher.serialize()}), 200
+
+@api.route('/profile/classes', methods=['GET'])
+@jwt_required()
+def my_classes():
+    id = get_jwt_identity()
+    teacher = Teacher.query.get(id)
+
+    if teacher:
+        my_groups = teacher.groups
+        all_my_groups = [group.serialize() for group in my_groups] # serializame por cada favorito, en user_favorites
+        return jsonify(all_my_groups), 200
+   
+    return jsonify({'error': 'No favourite animals'}),404

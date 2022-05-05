@@ -53,6 +53,13 @@ export const Navbar = () => {
             {localStorage.getItem("token") ? (
               <>
               <li className="nav-item dropdown">
+              <Link to="/myclasses">
+                <span className="spanNavbarLink">
+                  <b>Mis clases</b>
+                </span>
+              </Link>
+            </li>
+              <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"
                   href="#"
