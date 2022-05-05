@@ -10,7 +10,7 @@ export const RandomGroups = () => {
   return (
     <>
       {/* Render Students of my class START */}
-      <div className="container">
+      <div className="container m-0 p-0 m-auto">
         <div className="text-center mt-5 p-3 students ">
           <h3 className="fw-bold mb-3">Estudiantes</h3>
           <ol>
@@ -26,7 +26,7 @@ export const RandomGroups = () => {
         {/* Render Students of my class END */}
         {/* Buttons for pills START */}
         <div className="d-flex justify-content-center mt-4">
-          <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
+          <ul className="nav nav-pills mb-3 d-flex justify-content-center" id="pills-tab" role="tablist">
             <li className="nav-item" role="presentation">
               <button
                 className="nav-link active buttonspills"
@@ -61,10 +61,10 @@ export const RandomGroups = () => {
             role="tabpanel"
             aria-labelledby="pills-home-tab"
           >
-            <div className="row">
-              <div className="col-12 listgroups">
+            <div className="row listgroups">
+              
                 <Cardfor2person />
-              </div>
+             
             </div>
           </div>
           {/* RENDER 2 PEOPLE PER GROUP END */}

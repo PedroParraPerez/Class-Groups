@@ -10,17 +10,22 @@
     font-weight: bold;
 }
 .cardgroup{
+    width: 14em;
     text-align: center;
     border-radius: 10px;
 }
-.listgroups{
-    display: flex;
+.tab-content > .active{
+
     border: 1px solid teal;
     border-radius: 10px;
     box-shadow: 3px -3px 16px teal;
-
 }
-
+.listgroups{
+    display: flex;
+    justify-content: center;
+  
+  margin: 0 auto;
+}
 .buttonspills{
     color: black;
     font-weight: bold;

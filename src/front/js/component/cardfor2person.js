@@ -53,7 +53,7 @@ export const Cardfor2person = (props) => {
     <>
       {groupFinal.map((group, index) => {
               return (
-                <div key={index} className="card w-25 m-2 p-2 cardgroup">
+                <div key={index} className="card col-sm m-2 p-2 cardgroup">
                   <h5 className="card-title fw-bold">
                     {group.student2 ? group.group : ""}
                   </h5>
