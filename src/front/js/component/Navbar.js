@@ -18,7 +18,7 @@ export const Navbar = () => {
   return (
     <>
       <nav className="navbar navbar-expand-md navbar-light">
-        <Link to="/">
+        <Link to="/allclasses">
           <img src={Logo} alt="Cap" className="logo"/>
         </Link>
         {/* HAMBURGER MENU START  */}
