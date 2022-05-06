@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/OneClass.css"
+import { RandomGroups } from "./RandomGroups";
 export const OneClass = () => {
   const id = useParams().id;
   const { store, actions } = useContext(Context);
@@ -64,6 +65,18 @@ export const OneClass = () => {
             >
               Proyectos
             </button>
+            <button
+              className="nav-link"
+              id="nav-randomgroups-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#nav-randomgroups"
+              type="button"
+              role="tab"
+              aria-controls="nav-randomgroups"
+              aria-selected="false"
+            >
+              Grupos Aleatorios
+            </button>
           </div>
         </nav>
         <div className="tab-content mt-3" id="nav-tabContent">
@@ -98,6 +111,14 @@ export const OneClass = () => {
             aria-labelledby="nav-project-tab"
           >
             Proyectos
+          </div>
+          <div
+            className="tab-pane fade"
+            id="nav-randomgroups"
+            role="tabpanel"
+            aria-labelledby="nav-randomgroups-tab"
+          >
+           <RandomGroups/>
           </div>
         </div>
       </div>
