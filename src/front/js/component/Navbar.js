@@ -50,14 +50,21 @@ export const Navbar = () => {
               <li className="nav-item dropdown">
               <Link to="/courses">
                 <span className="spanNavbarLink">
-                  <b>Mis Cursos</b>
+                  <b>Cursos</b>
+                </span>
+              </Link>
+            </li>
+            <li className="nav-item dropdown">
+              <Link to="/allstudents">
+                <span className="spanNavbarLink">
+                  <b>Alumnos</b>
                 </span>
               </Link>
             </li>
               <li className="nav-item dropdown">
               <Link to="/allclasses">
                 <span className="spanNavbarLink">
-                  <b>Mis clases</b>
+                  <b>Clases</b>
                 </span>
               </Link>
             </li>
