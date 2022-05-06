@@ -35,13 +35,8 @@ export const Navbar = () => {
         {/* LINKS START */}
         <div id="dropdownlinks" className="collapse navbar-collapse">
           <ul className="navbar-nav ms-3 links">
-            <li className="nav-item dropdown">
-              <Link to="/attendancy">
-                <span className="spanNavbarLink">
-                  <b>Asistencia</b>
-                </span>
-              </Link>
-            </li>
+           
+            
             <li className="nav-item dropdown">
               <Link to="/randomgroups">
                 <span className="spanNavbarLink">
@@ -53,7 +48,14 @@ export const Navbar = () => {
             {localStorage.getItem("token") ? (
               <>
               <li className="nav-item dropdown">
-              <Link to="/myclasses">
+              <Link to="/courses">
+                <span className="spanNavbarLink">
+                  <b>Mis Cursos</b>
+                </span>
+              </Link>
+            </li>
+              <li className="nav-item dropdown">
+              <Link to="/allclasses">
                 <span className="spanNavbarLink">
                   <b>Mis clases</b>
                 </span>

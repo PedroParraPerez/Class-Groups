@@ -108,3 +108,8 @@ def my_classes():
         return jsonify(all_my_groups), 200
    
     return jsonify({'error': 'No favourite animals'}),404
+
+@api.route('/oneclassinfo/<int:id>', methods=['GET'])
+def get_class_info(id):
+    group = Group.query.get(id)
+    return jsonify({'results': group.serialize()}),200

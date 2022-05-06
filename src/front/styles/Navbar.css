@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@100&family=Comforter&family=Josefin+Sans:ital,wght@1,500&family=Sansita+Swashed:wght@300&family=Ubuntu:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@100&family=Comforter&family=Josefin+Sans:ital,wght@1,500&family=Sansita+Swashed:wght@300&family=Ubuntu:wght@300&display=swap");
 
-nav {
+nav.navbar {
   background-color: rgb(48, 98, 190);
   margin-bottom: 20vh;
 }

@@ -23,7 +23,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			  modalLogin: false,
 			  modalSignUp: false,
 			  allStudentInWeb: [],
-			  MyClasses: [],
+			  AllClasses: [],
+			  oneClassInfo: [] ,
 		},
 		actions: {
 		
@@ -84,7 +85,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		  },
 
 		
-		getMyClasses: async () => {
+		getAllClasses: async () => {
 			const response = await fetch(getStore().URLAPI + "profile/classes", {
 			  method: "GET",
 			  headers: {
@@ -95,7 +96,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 			});
 			const data = await response.json();
 	
-			setStore({ MyClasses: data });
+			setStore({ AllClasses: data });
+		  },
+		  getClassInfo: async (id) => {
+			const response = await fetch(getStore().URLAPI + "oneclassinfo/" + id, {
+			  headers: {
+				"Content-Type": "application/json",
+				Accept: "application/json",
+				Authorization: `Bearer ${localStorage.getItem("token")}`,
+			  },
+			});
+			const data = await response.json();
+			console.log(data)
+			setStore({ oneClassInfo: data.results });
 		  },
 		}
 	};
