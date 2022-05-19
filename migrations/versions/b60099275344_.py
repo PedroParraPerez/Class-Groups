@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: aecda4a3323d
+Revision ID: b60099275344
 Revises: 
-Create Date: 2022-05-05 19:33:45.278466
+Create Date: 2022-05-19 12:16:30.951784
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'aecda4a3323d'
+revision = 'b60099275344'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -55,16 +55,11 @@ def upgrade():
     sa.Column('name', sa.String(length=120), nullable=False),
     sa.Column('course_id', sa.Integer(), nullable=True),
     sa.Column('attendancy_id', sa.Integer(), nullable=True),
+    sa.Column('teacher_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['attendancy_id'], ['attendancy.id'], ),
     sa.ForeignKeyConstraint(['course_id'], ['course.id'], ),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_table('groups',
-    sa.Column('groups_id', sa.Integer(), nullable=False),
-    sa.Column('teacher_id', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['groups_id'], ['group.id'], ),
     sa.ForeignKeyConstraint(['teacher_id'], ['teacher.id'], ),
-    sa.PrimaryKeyConstraint('groups_id', 'teacher_id')
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('projects_groups',
     sa.Column('groups_id', sa.Integer(), nullable=False),
@@ -97,7 +92,6 @@ def downgrade():
     op.drop_table('projects_student')
     op.drop_table('student')
     op.drop_table('projects_groups')
-    op.drop_table('groups')
     op.drop_table('group')
     op.drop_table('teacher')
     op.drop_table('project')

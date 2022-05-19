@@ -1,7 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			URLAPI : "https://3001-pedroparrap-classgroups-pisecpspisl.ws-eu44.gitpod.io/api/",
+			URLAPI : "https://3001-pedroparrap-classgroups-puulb8r9vpf.ws-eu45.gitpod.io/api/",
 			STUDENTS: [
 				"Miguel Ángel Padilla",
 				"Alicia Garrote",
@@ -22,6 +22,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			  numPersonPerGroup3: 3,
 			  modalLogin: false,
 			  modalSignUp: false,
+			  modalAddNewClass: false,
 			  allStudentInWeb: [],
 			  AllClasses: [],
 			  oneClassInfo: [] ,
@@ -35,6 +36,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 		modalSingUp : () => {
 			const aux = getStore().modalSignUp
 			setStore({ modalSignUp: !aux });
+		},
+		modalAddNewClass : () => {
+			const aux = getStore().modalAddNewClass
+			setStore({ modalAddNewClass: !aux });
 		},
 		logIn: async (teacher) => {
 			const response = await fetch(getStore().URLAPI + "login", {
@@ -107,8 +112,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 			  },
 			});
 			const data = await response.json();
-			console.log(data)
+			
 			setStore({ oneClassInfo: data.results });
+		  },
+		  AddNewClass: async (newclass) => {
+			console.log(newclass)
+			const response = await fetch(getStore().URLAPI + "addnewclass", {
+				method: "POST",
+				headers: {
+				  "Content-Type": "application/json",
+				  Accept: "application/json",
+				  Authorization: `Bearer ${localStorage.getItem("token")}`,
+				},
+				body: JSON.stringify(newclass),
+			  });
+			  if(response.status == 200){
+				  getActions().getAllClasses()
+				  getActions().modalAddNewClass();
+			  }else{
+				  alert("Introduce el nombre de la clase")
+			  }
 		  },
 		}
 	};

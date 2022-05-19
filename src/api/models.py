@@ -5,10 +5,7 @@ db = SQLAlchemy()
 
 # Many to Many Relationship
 
-groups = db.Table('groups',
-    db.Column('groups_id', db.Integer, db.ForeignKey('group.id'), primary_key=True),
-    db.Column('teacher_id', db.Integer, db.ForeignKey('teacher.id'), primary_key=True)
-)
+
 
 projects_groups = db.Table('projects_groups',
     db.Column('groups_id', db.Integer, db.ForeignKey('group.id'), primary_key=True),
@@ -27,8 +24,8 @@ class Teacher(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(240), unique=False, nullable=False)
     type_of_teacher = db.Column(db.String(120), unique=False, nullable=True)
-    
-    groups = db.relationship('Group', secondary=groups, lazy='subquery',backref=db.backref('Teachers', lazy=True)) # Many to Many with Group, dont need line in Group
+    groups = db.relationship('Group', backref='teacher', lazy=True)
+   
 
     def __repr__(self):
         return f'<Teacher {self.name}>'
@@ -39,7 +36,6 @@ class Teacher(db.Model):
             "name": self.name,
             "email": self.email,
             "type_of_teacher": self.type_of_teacher,
-            'groups': [group.serialize() for group in self.groups]
         }
 
 class Student(db.Model):
@@ -47,7 +43,7 @@ class Student(db.Model):
     name = db.Column(db.String(120), nullable=False)
     group_id = db.Column(db.Integer, db.ForeignKey('group.id'), nullable=True) # One to Many with Group
     attendancy_id = db.Column(db.Integer, db.ForeignKey('attendancy.id'), nullable=True) # One to Many with Attendancy
-
+    
 
     
 
@@ -68,7 +64,7 @@ class Group(db.Model):
     students = db.relationship('Student', backref='Group', lazy=True)
     course_id = db.Column(db.Integer, db.ForeignKey('course.id'), nullable=True) # One to Many with Course
     attendancy_id = db.Column(db.Integer, db.ForeignKey('attendancy.id'), nullable=True) # One to Many with Attendancy
-    
+    teacher_id = db.Column(db.Integer, db.ForeignKey('teacher.id'), nullable=True)
 
     def __repr__(self):
         return f'<Group {self.name}>'
@@ -79,6 +75,7 @@ class Group(db.Model):
             "name": self.name,
             "course_id": self.course_id,
             "attendancy_id": self.attendancy_id,
+            'teacher':Teacher.query.get(self.teacher_id).serialize()
         }
 
 class Course(db.Model):

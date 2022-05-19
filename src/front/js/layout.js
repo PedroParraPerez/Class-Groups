@@ -1,13 +1,13 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Footer } from "./component/footer";
-import { Navbar } from "./component/Navbar";
-import ScrollToTop from "./component/scrollToTop";
+import { Footer } from "./general_components/footer";
+import { Navbar } from "./general_components/Navbar";
+import ScrollToTop from "./general_components/scrollToTop";
 import { Atendancy } from "./pages/Atendancy";
 import { Courses } from "./pages/Courses";
 import { Home } from "./pages/Home";
-import { AllClasses } from "./pages/AllClasses";
-import { OneClass } from "./pages/OneClass";
+import { AllClasses } from "./pages/AllClasses/AllClasses";
+import { OneClass } from "./pages/OnClass/OneClass";
 
 
 import { RandomGroups } from "./pages/RandomGroups";

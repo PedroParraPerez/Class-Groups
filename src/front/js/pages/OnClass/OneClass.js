@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Context } from "../store/appContext";
-import "../../styles/OneClass.css"
-import { RandomGroups } from "./RandomGroups";
+import { Context } from "../../store/appContext";
+import "./OneClass.css"
+import { RandomGroups } from "../RandomGroups";
 export const OneClass = () => {
   const id = useParams().id;
   const { store, actions } = useContext(Context);
@@ -10,7 +10,7 @@ export const OneClass = () => {
   useEffect(() => {
     actions.getClassInfo(id);
   }, []);
-
+ 
   return (
     <>
       <div className="container-fluid text-center mt-5">
