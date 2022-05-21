@@ -73,11 +73,11 @@ export const Cardfor3person = () => {
               <p className="card-text fw-bold">{group.student2}</p> 
               <p className="card-text fw-bold">{group.student3}</p> </>
               : group.student2 ? 
-                <><p className="card-text fw-bold">{group.student1} va a la Sala {randomNumberForPersonWithoutGroup[0]}</p> 
+                <><p className="card-text fw-bold mt-3">{group.student1} va a la Sala {randomNumberForPersonWithoutGroup[0]}</p> 
                 <p className="card-text fw-bold">{group.student2} va a la Sala {randomNumberForPersonWithoutGroup[1]}</p> 
                  </>
                 : group.student1 ? 
-                <><p className="card-text fw-bold mt-4">{group.student1} va a la Sala {randomNumberForPersonWithoutGroup[0]}</p>
+                <><p className="card-text fw-bold mt-5">{group.student1} va a la Sala {randomNumberForPersonWithoutGroup[0]}</p>
                 
                  </>
                 : ""}
