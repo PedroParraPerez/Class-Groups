@@ -13,7 +13,7 @@ export const Cardfor3person = () => {
   const [randomNumber, setRandomNumber] = useState([]);
 
 
-  const generateTwoRandomNumbersDifferent = () => {
+  const generateTwoRandomNumbersDifferent = () => { // Generate array with store.STUDENTS.length index and differents numbers in all index
     while (randomNumber.length < store.STUDENTS.length) {
       let r = Math.floor(Math.random() * store.STUDENTS.length);
       randomNumber.indexOf(r) === -1 ? randomNumber.push(r) : "";
@@ -21,7 +21,7 @@ export const Cardfor3person = () => {
     return randomNumber;
   };
 
-  let groupFinal = [];
+  let finalGroup = []; // Array of objets with allfinal groups
 
   const GenerateRandomGroups = (randomNumber) => {
     generateTwoRandomNumbersDifferent();
@@ -38,13 +38,13 @@ export const Cardfor3person = () => {
         store.STUDENTS[randomNumber[j]],
         store.STUDENTS[randomNumber[x]]
       );
-      groupFinal.push(group);
+      finalGroup.push(group);
       i = i + sum;
       j = j + sum;
       x = x + sum;
     }
 
-    return groupFinal;
+    return finalGroup;
   };
 
   GenerateRandomGroups(randomNumber);
@@ -62,7 +62,7 @@ export const Cardfor3person = () => {
   generateTwoRandomNumbersDifferentForPersonWithoutGroup()
   return (
     <>
-      {groupFinal.map((group, index) => {
+      {finalGroup.map((group, index) => {
         return (
           <div key={index} className="card col-sm m-2 p-2 cardgroup">
             <h5 className="card-title fw-bold">
