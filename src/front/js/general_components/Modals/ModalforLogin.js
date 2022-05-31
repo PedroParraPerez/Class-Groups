@@ -16,7 +16,7 @@ export const ModalforLogin = (props) => {
           actions.modalLogin();
         }}
         className=" modalclose btn-close  p-2 "
-        type="button" class="btn-close" aria-label="Close"></button>
+        type="button"  aria-label="Close"></button>
         <div className="row mt-3">
           <div className="col-12">
             <input
@@ -50,7 +50,7 @@ export const ModalforLogin = (props) => {
           </div>
         </div>
         <div className="mt-2">
-          <div className="d-flex position-relative justify-content-end">
+          <div className="d-flex justify-content-end">
         <button
           onClick={() => {
             actions.logIn(login);

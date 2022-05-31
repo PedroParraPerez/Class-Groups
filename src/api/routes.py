@@ -104,7 +104,33 @@ def my_classes():
     if teacher:
         my_groups = teacher.groups
         all_my_groups = [group.serialize() for group in my_groups] # serializame por cada favorito, en user_favorites
-        print(all_my_groups)
         return jsonify(all_my_groups), 200
    
     return jsonify({'error': 'No favourite animals'}),404
+
+@api.route('/oneclassinfo/<int:id>', methods=['GET'])
+def get_class_info(id):
+    group = Group.query.get(id)
+    return jsonify({'results': group.serialize()}),200
+
+@api.route('/addnewclass', methods=["POST"])
+@jwt_required()
+def add_new_class():
+
+    id = get_jwt_identity()
+    teacher = Teacher.query.get(id)
+    name = request.json.get('name', None)
+
+    if not (name):
+        return jsonify({'message': 'Data not provided'}), 400
+    else:
+        group = Group(name=name)
+    
+
+        db.session.add(group)
+        teacher.groups.append(group)
+        db.session.commit()
+
+        return jsonify({'message':"guardado hecho perfecto de la clase " + name}), 200
+    
+        

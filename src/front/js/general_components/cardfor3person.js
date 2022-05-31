@@ -13,7 +13,7 @@ export const Cardfor3person = () => {
   const [randomNumber, setRandomNumber] = useState([]);
 
 
-  const generateTwoRandomNumbersDifferent = () => {
+  const generateTwoRandomNumbersDifferent = () => { // Generate array with store.STUDENTS.length index and differents numbers in all index
     while (randomNumber.length < store.STUDENTS.length) {
       let r = Math.floor(Math.random() * store.STUDENTS.length);
       randomNumber.indexOf(r) === -1 ? randomNumber.push(r) : "";
@@ -21,7 +21,7 @@ export const Cardfor3person = () => {
     return randomNumber;
   };
 
-  let groupFinal = [];
+  let finalGroup = []; // Array of objets with allfinal groups
 
   const GenerateRandomGroups = (randomNumber) => {
     generateTwoRandomNumbersDifferent();
@@ -38,13 +38,13 @@ export const Cardfor3person = () => {
         store.STUDENTS[randomNumber[j]],
         store.STUDENTS[randomNumber[x]]
       );
-      groupFinal.push(group);
+      finalGroup.push(group);
       i = i + sum;
       j = j + sum;
       x = x + sum;
     }
 
-    return groupFinal;
+    return finalGroup;
   };
 
   GenerateRandomGroups(randomNumber);
@@ -62,25 +62,25 @@ export const Cardfor3person = () => {
   generateTwoRandomNumbersDifferentForPersonWithoutGroup()
   return (
     <>
-      {groupFinal.map((group, index) => {
+      {finalGroup.map((group, index) => {
         return (
           <div key={index} className="card col-sm m-2 p-2 cardgroup">
             <h5 className="card-title fw-bold">
               {group.student3 ? group.group : ""}
             </h5>
-           {group.student3 ? 
-           <p className="card-text fw-bold">{group.student3}</p> : 
-           <>
-            <p className="card-text fw-bold mt-4">{group.student1} va a la Sala {randomNumberForPersonWithoutGroup[0]}</p>
-            <p className="card-text fw-bold">{group.student2} va a la Sala {randomNumberForPersonWithoutGroup[1]}</p>
-           </>}
-
-
-
-
-            
-            <p className="card-text fw-bold">{group.student3 ? group.student1 : ""}</p>
-            <p className="card-text fw-bold">{group.student3 ? group.student2 : ""}</p>
+              {group.student3 ? 
+              <><p className="card-text fw-bold">{group.student1}</p> 
+              <p className="card-text fw-bold">{group.student2}</p> 
+              <p className="card-text fw-bold">{group.student3}</p> </>
+              : group.student2 ? 
+                <><p className="card-text fw-bold mt-3">{group.student1} va a la Sala {randomNumberForPersonWithoutGroup[0]}</p> 
+                <p className="card-text fw-bold">{group.student2} va a la Sala {randomNumberForPersonWithoutGroup[1]}</p> 
+                 </>
+                : group.student1 ? 
+                <><p className="card-text fw-bold mt-5">{group.student1} va a la Sala {randomNumberForPersonWithoutGroup[0]}</p>
+                
+                 </>
+                : ""}
           </div>
         );
       })}

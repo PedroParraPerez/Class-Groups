@@ -1,11 +1,13 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Footer } from "./component/footer";
-import { Navbar } from "./component/Navbar";
-import ScrollToTop from "./component/scrollToTop";
+import { Footer } from "./general_components/footer";
+import { Navbar } from "./general_components/Navbar";
+import ScrollToTop from "./general_components/scrollToTop";
 import { Atendancy } from "./pages/Atendancy";
+import { Courses } from "./pages/Courses";
 import { Home } from "./pages/Home";
-import { MyClasses } from "./pages/MyClasses";
+import { AllClasses } from "./pages/AllClasses/AllClasses";
+import { OneClass } from "./pages/OnClass/OneClass";
 
 
 import { RandomGroups } from "./pages/RandomGroups";
@@ -23,6 +25,7 @@ const Layout = () => {
             <Route path="/" element={<Home />} />
             <Route path="/randomgroups" element={<RandomGroups />} />
             <Route path="/attendancy" element={<Atendancy />} />
+            <Route path="/courses" element={<Courses />} />
             <Route
 			path="*"
               element={
@@ -31,7 +34,8 @@ const Layout = () => {
                 </>
               }
             />
-            <Route path="/myclasses" element={<MyClasses/>}/>
+            <Route path="/allclasses" element={<AllClasses/>}/>
+            <Route path="/class/:id" element={<OneClass />} />
           </Routes>
           <Footer />
         </ScrollToTop>

@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/RandomGroups.css";
-import { Cardfor2person } from "../component/cardfor2person";
-import { Cardfor3person } from "../component/cardfor3person";
+import { Cardfor2person } from "../general_components/cardfor2person";
+import { Cardfor3person } from "../general_components/cardfor3person";
 
 export const RandomGroups = () => {
   const { store, actions } = useContext(Context);
