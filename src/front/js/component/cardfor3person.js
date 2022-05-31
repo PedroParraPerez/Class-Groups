@@ -1,16 +1,22 @@
-import React, { useState,  useContext } from "react";
+import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 
 export const Cardfor3person = () => {
-  function Group(id, group, student1, student2, student3) {
-    this.id = id;
-    this.group = group;
-    this.student1 = student1;
-    this.student2 = student2;
-    this.student3 = student3;
-  }
+
   const { store, actions } = useContext(Context);
-  const [randomNumber, setRandomNumber] = useState([]);
+
+  class Group {
+    constructor(id, group, student1, student2, student3){
+      this.id = id;
+      this.group = group;
+      this.student1 = student1;
+      this.student2 = student2;
+      this.student3 = student3;
+    }
+  }
+  
+  let randomNumber = []
+  let groupFinal = [];
 
 
   const generateTwoRandomNumbersDifferent = () => {
@@ -21,7 +27,7 @@ export const Cardfor3person = () => {
     return randomNumber;
   };
 
-  let groupFinal = [];
+ 
 
   const GenerateRandomGroups = (randomNumber) => {
     generateTwoRandomNumbersDifferent();
