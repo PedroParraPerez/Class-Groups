@@ -16,7 +16,7 @@ export const Cardfor3person = () => {
   }
   
   let randomNumber = []
-  let groupFinal = [];
+  let finalGroup = [];
 
 
   const generateTwoRandomNumbersDifferent = () => { // Generate array with store.STUDENTS.length index and differents numbers in all index
