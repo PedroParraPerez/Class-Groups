@@ -1,20 +1,22 @@
-import React, { useState, useEffect, useContext } from "react";
-import PropTypes from "prop-types";
+import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 
 
-export const Cardfor2person = (props) => {
-
-  function Group(id, group, student1, student2, student3) {
-
-    this.id = id;
-    this.group = group;
-    this.student1 = student1;
-    this.student2 = student2;
-  }
+export const Cardfor2person = () => {
+  
   const {store, actions} = useContext(Context)
-  const [randomNumber, setRandomNumber] = useState([]);
-
+  
+  class Group {
+    constructor(id, group, student1, student2, student3){
+      this.id = id;
+      this.group = group;
+      this.student1 = student1;
+      this.student2 = student2;
+    }
+  }
+ 
+  let randomNumber = []
+  let groupFinal = [];
 
   const generateTwoRandomNumbersDifferent = () => {
     while (randomNumber.length < store.STUDENTS.length) {
@@ -24,7 +26,6 @@ export const Cardfor2person = (props) => {
     return randomNumber;
   };
 
-  let groupFinal = [];
 
   const GenerateRandomGroups = (randomNumber) => {
     generateTwoRandomNumbersDifferent();

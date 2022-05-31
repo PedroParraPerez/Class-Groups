@@ -14,10 +14,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				"José Ignacio Casanova",
 				"José Javier Bustillo",
 				"Juan Enrique Arés",
-				"Mateo Gómez",
 				"Miguel Ángel Jurado",
 				"Sergio Mendoza",
+<<<<<<< HEAD
 				"Carolina"
+=======
+				"Carolina Celis",
+>>>>>>> master
 			  ],
 			  numPersonPerGroup2: 2,
 			  numPersonPerGroup3: 3,
